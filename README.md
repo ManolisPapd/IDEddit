@@ -7,3 +7,4 @@ Created with Kotlin and TornadFX
   
 ### Useful links
 - https://github.com/edvin/tornadofx
+- https://edvin.gitbooks.io/tornadofx-guide/
