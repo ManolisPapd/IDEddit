@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="projectStructure">
+    <file>design/projectStructure.png</file>
+    <file>design/iconfinder_folder_118926.png</file>
+  </qresource>
+</RCC>
