@@ -76,7 +76,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.subreddit.setText("")
 
     def clicked(self, item):
-        #Mia lush einai na pareis mexri kai to : gia to apo ta posts
+        #Getting the index from the counter
         splitted_item_info = item.text().split(" ")
         index = int(splitted_item_info[0]) - 1
         post = posts[index]
