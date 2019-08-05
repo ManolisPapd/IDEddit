@@ -1,7 +1,6 @@
 from prawcore import NotFound
-
 from mypackage import handler
-
+from praw.models import MoreComments
 
 class Post:
     def __init__(self, id, title, body, url, score, subreddit,number_of_comments):
@@ -44,5 +43,31 @@ class Reddit():
             return posts
         else:
             return []
+
+    def load_comments(id):
+        submission = handler.submission(id)
+
+        #TODO automate it for n replies
+        '''
+        def print_comments:
+            for child in parent:
+                print child
+                loop(len(child.replies)):
+                    recursive: print_comments(child.replies))
+        '''
+        for top_level_comment in submission.comments:
+            if isinstance(top_level_comment, MoreComments):
+                continue
+            print("Comment: " + top_level_comment.body + "\n"+top_level_comment.author.name + "\n")
+            #parse comment replies
+            print("Replies: " + format(len(top_level_comment.replies)))
+            for replyComment in top_level_comment.replies:
+                if isinstance(replyComment, MoreComments):
+                    continue
+                print("\t\t Reply: " + replyComment.body + "\n"+replyComment.author.name)
+                print("###Replies of replies: " + format(len(replyComment.replies)))
+
+
+
 
 
