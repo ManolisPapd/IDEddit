@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from finalDesign import *
 from reddit import *
-
+import json
 
 def list_item_format(counter, score, title, url, subreddit, number):
     list_item = (format(counter) + " | " +
@@ -31,7 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("popular")
+        posts = Reddit.call_posts("greece")
 
         counter = 0
         for post in posts:
@@ -84,6 +84,22 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.postBody.setText(post.body)
         self.ui.postUrl.setText(post.url)
         self.ui.postSub.setText(post.subreddit)
+
+        #create comments parents and children
+        self.ui.treeComments.clear() #clear previous comments
+        Reddit.load_comments(post.id)
+        #TODO problima sta replies ton children
+        Comments = ({
+            'Comment1': (
+                'Reply11',
+                'Reply12'),
+            'Comment2': ('Reply21', 'Reply22')
+        })
+        for key, value in Comments.items():
+            commentItem = QTreeWidgetItem(self.ui.treeComments, [key])
+            for val in value:
+                reply = QTreeWidgetItem(commentItem, [val])
+            self.ui.treeComments.addTopLevelItem(commentItem)
 
 
 if __name__ == '__main__':
