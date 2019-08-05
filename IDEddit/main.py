@@ -31,7 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("greece")
+        posts = Reddit.call_posts("testingground4bots")
 
         counter = 0
         for post in posts:

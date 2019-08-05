@@ -3,3 +3,15 @@
 - Present comments based on Tree node
 - Sort posts by everything (best, hot, new, controversial, top (all), rising)
 
+Tree(0,
+		[
+		Tree(1,
+			[Tree(1_1, [Tree(1_1_1)]), Tree(1_2)]),
+		Tree(2,
+				[Tree(2_1)]),
+		Tree(3)
+
+])
+
+Άνοιξε για το child
+Γέμισε αν έχει grand

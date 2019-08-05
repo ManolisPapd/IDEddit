@@ -13,6 +13,22 @@ class Post:
         self.number_of_comments = number_of_comments
 
 
+class Tree(object):
+    def __init__(self, name='root', children=None):
+        self.name = name
+        self.children = []
+        if children is not None:
+            for child in children:
+                self.add_child(child)
+
+    def __repr__(self):
+        return self.name
+
+    def add_child(self, node):
+        assert isinstance(node, Tree)
+        self.children.append(node)
+
+
 def sub_exists(request):
     exists = True
     try:
@@ -20,6 +36,31 @@ def sub_exists(request):
     except NotFound:
         exists = False
     return exists
+
+
+def print_comments(parent):
+
+    for child in parent:
+        if isinstance(child, MoreComments):
+            continue
+        try:
+            print(child.body + "\t===" + child.author.name + "\t" + format(len(child.replies)) + "\n")
+        except AttributeError:
+            continue
+        if len(child.replies) > 0: #to child auto einai pateras giati exei paidia
+            for grand in child.replies:
+                if isinstance(grand, MoreComments):
+                    continue
+                try:
+                    print(grand.body + "\t===" + grand.author.name + "\t" + format(len(grand.replies)) + "\n")
+                    print_comments(grand.replies)
+
+
+                except AttributeError:
+                    continue
+
+
+
 
 
 class Reddit():
@@ -46,26 +87,11 @@ class Reddit():
 
     def load_comments(id):
         submission = handler.submission(id)
+        t = print_comments(submission.comments)
 
-        #TODO automate it for n replies
-        '''
-        def print_comments:
-            for child in parent:
-                print child
-                loop(len(child.replies)):
-                    recursive: print_comments(child.replies))
-        '''
-        for top_level_comment in submission.comments:
-            if isinstance(top_level_comment, MoreComments):
-                continue
-            print("Comment: " + top_level_comment.body + "\n"+top_level_comment.author.name + "\n")
-            #parse comment replies
-            print("Replies: " + format(len(top_level_comment.replies)))
-            for replyComment in top_level_comment.replies:
-                if isinstance(replyComment, MoreComments):
-                    continue
-                print("\t\t Reply: " + replyComment.body + "\n"+replyComment.author.name)
-                print("###Replies of replies: " + format(len(replyComment.replies)))
+        # print(len(t.children))
+
+
 
 
 
