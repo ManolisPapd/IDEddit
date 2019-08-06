@@ -1,6 +1,7 @@
 from prawcore import NotFound
 from mypackage import handler
 from praw.models import MoreComments
+from anytree import Node, RenderTree
 
 
 class Post:
@@ -14,23 +15,6 @@ class Post:
         self.number_of_comments = number_of_comments
 
 
-# credit ruda https://stackoverflow.com/a/28015122/2606441
-class Tree(object):
-    def __init__(self, name='root', children=None):
-        self.name = name
-        self.children = []
-        if children is not None:
-            for child in children:
-                self.add_child(child)
-
-    def __repr__(self):
-        return self.name
-
-    def add_child(self, node):
-        assert isinstance(node, Tree)
-        self.children.append(node)
-
-
 def sub_exists(request):
     exists = True
     try:
@@ -40,21 +24,15 @@ def sub_exists(request):
     return exists
 
 
-def print_comments(parent, recList):
+def print_comments(incoming, parent_node):
+    results = Node(incoming.body + " /u/" + incoming.author.name, parent=parent_node)
+    if len(incoming.replies) > 0:
+        for child in incoming.replies:
+            if isinstance(child, MoreComments):
+                continue
+            print_comments(child, results)
 
-    t = Tree('')
-    branch = Tree('')
-    for child in parent:
-        if isinstance(child, MoreComments):
-            continue
-        try:
-            print(child.body)
-
-        except AttributeError:
-            continue
-
-    print(recList)
-    return recList
+    return results
 
 
 class Reddit():
@@ -62,7 +40,7 @@ class Reddit():
         if sub_exists(request):
             posts = []
             subreddit = handler.subreddit(request)
-            hot_python = subreddit.hot(limit=20)
+            hot_python = subreddit.hot(limit=100)
             for post_from_request in hot_python:
                 posts.append(
                     Post(
@@ -81,13 +59,16 @@ class Reddit():
 
     def load_comments(id):
         submission = handler.submission(id)
+        parent = submission.comments
+        parent_node = Node("COMMENTS")
+        for child in parent:
+            if isinstance(child, MoreComments):
+                continue
+            try:
+                print_comments(child, parent_node)
+            except AttributeError:
+                continue
+        # for pre, fill, node in RenderTree(parent_node):
+        #     print("%s%s" % (pre, node.name))
+        return parent_node
 
-        # nodeList = [Tree('Test1'), Tree('2')]
-        # node = Tree('Test', nodeList)
-        # node.add_child(Tree('3'))
-        # print(len(node.children))
-        comment_tree = Tree('COMMENTS', print_comments(submission.comments, []))
-        print("\n\nNo. of children:\t" + format(len(comment_tree.children)))
-        # print(
-        #     t.name + "\n No. of children: " +
-        #     format(len(t.children)))

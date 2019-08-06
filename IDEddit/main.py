@@ -2,7 +2,8 @@ import sys
 from PyQt5.QtWidgets import *
 from finalDesign import *
 from reddit import *
-import json
+from anytree import Node, RenderTree
+from anytree.exporter import JsonExporter
 
 def list_item_format(counter, score, title, url, subreddit, number):
     list_item = (format(counter) + " | " +
@@ -87,19 +88,26 @@ class MainWindow(QtWidgets.QMainWindow):
 
         #create comments parents and children
         self.ui.treeComments.clear() #clear previous comments
-        Reddit.load_comments(post.id)
-        #TODO problima sta replies ton children
+        commentsTree = Reddit.load_comments(post.id)
+        for pre, fill, node in RenderTree(commentsTree):
+            print("%s%s" % (pre, node.name))
+        exporter = JsonExporter(indent=1, sort_keys=False)
+        print(exporter.export(commentsTree))
+
+
         Comments = ({
-            'Comment1': (
-                'Reply11',
-                'Reply12'),
+            'Comment1': {
+                'Reply11' : {('Reply111')},
+                'Reply12': ('Reply121')},
             'Comment2': ('Reply21', 'Reply22')
         })
         for key, value in Comments.items():
             commentItem = QTreeWidgetItem(self.ui.treeComments, [key])
             for val in value:
-                reply = QTreeWidgetItem(commentItem, [val])
+                QTreeWidgetItem(commentItem, [val])
             self.ui.treeComments.addTopLevelItem(commentItem)
+
+
 
 
 if __name__ == '__main__':
