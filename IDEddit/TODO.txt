@@ -1,5 +1,5 @@
 - Resolve bug when subreddit doesn't exist (DONE, but with multiple enters it bugs!)
-- Add line numbering on java code
+- Add line numbering on code
 - Present comments based on Tree node
 - Sort posts by everything (best, hot, new, controversial, top (all), rising)
 
@@ -13,5 +13,17 @@ Tree(0,
 
 ])
 
-Άνοιξε για το child
-Γέμισε αν έχει grand
+Tree(Parent,
+        [
+         Tree(1, [Tree(1a, [Tree(1aa)]), Tree(1b)]),
+         Tree(2, [Tree(2a)]),
+         Tree(3)
+    ])
+
+Από το τέλος προς την αρχή
+-Όρισε Tree(2_1)
+-Κάντο return
+-Το βάζεις στην λίστα
+-Έχεις ανοίξει από πριν Tree(2) (πατέρας)
+
+

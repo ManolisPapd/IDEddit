@@ -13,6 +13,7 @@ class Post:
         self.number_of_comments = number_of_comments
 
 
+#credit ruda https://stackoverflow.com/a/28015122/2606441
 class Tree(object):
     def __init__(self, name='root', children=None):
         self.name = name
@@ -38,13 +39,15 @@ def sub_exists(request):
     return exists
 
 
-def print_comments(parent):
-
+def print_comments(parent, branch):
+    t = Tree('EMPTY_TREE')
     for child in parent:
         if isinstance(child, MoreComments):
             continue
         try:
-            print(child.body + "\t===" + child.author.name + "\t" + format(len(child.replies)) + "\n")
+            print(child.body + "\t children: " + format(len(child.replies)) + "\n")
+            #init node with current comment
+            t = Tree(child.body)
         except AttributeError:
             continue
         if len(child.replies) > 0: #to child auto einai pateras giati exei paidia
@@ -52,12 +55,13 @@ def print_comments(parent):
                 if isinstance(grand, MoreComments):
                     continue
                 try:
-                    print(grand.body + "\t===" + grand.author.name + "\t" + format(len(grand.replies)) + "\n")
-                    print_comments(grand.replies)
+                    print(grand.body + "\t children: " + format(len(grand.replies)) + "\n")
+                    print_comments(grand.replies, 0)
 
 
                 except AttributeError:
                     continue
+    return t
 
 
 
@@ -87,9 +91,17 @@ class Reddit():
 
     def load_comments(id):
         submission = handler.submission(id)
-        t = print_comments(submission.comments)
 
-        # print(len(t.children))
+
+        # nodeList = [Tree('Test1'), Tree('2')]
+        # node = Tree('Test', nodeList)
+        # print(len(node.children))
+        t = print_comments(submission.comments, Tree("IDEddit_FIRST_CALL"))
+        print(
+            t.name +"\n No. of children: "+
+            format(len(t.children)))
+
+
 
 
 
