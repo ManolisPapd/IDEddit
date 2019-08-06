@@ -2,8 +2,9 @@ from prawcore import NotFound
 from mypackage import handler
 from praw.models import MoreComments
 
+
 class Post:
-    def __init__(self, id, title, body, url, score, subreddit,number_of_comments):
+    def __init__(self, id, title, body, url, score, subreddit, number_of_comments):
         self.id = id
         self.title = title
         self.body = body
@@ -13,7 +14,7 @@ class Post:
         self.number_of_comments = number_of_comments
 
 
-#credit ruda https://stackoverflow.com/a/28015122/2606441
+# credit ruda https://stackoverflow.com/a/28015122/2606441
 class Tree(object):
     def __init__(self, name='root', children=None):
         self.name = name
@@ -39,33 +40,21 @@ def sub_exists(request):
     return exists
 
 
-def print_comments(parent, branch):
-    t = branch
+def print_comments(parent, recList):
+
+    t = Tree('')
+    branch = Tree('')
     for child in parent:
         if isinstance(child, MoreComments):
             continue
         try:
-            print("PRE:\t"+child.body + "\t children: " + format(len(child.replies)) + "\n")
-            #init node with current comment
-            t = branch
+            print(child.body)
+
         except AttributeError:
             continue
-        if len(child.replies) > 0:
-            for grand in child.replies:
-                if isinstance(grand, MoreComments):
-                    continue
-                try:
-                    print("AFTER:\t"+grand.body + "\t children: " + format(len(grand.replies)) +"\t"+child.body+ "\n")
-                    print_comments(grand.replies, Tree(grand.body))
 
-                except AttributeError:
-                   continue
-
-
-    return t
-
-
-
+    print(recList)
+    return recList
 
 
 class Reddit():
@@ -82,7 +71,7 @@ class Reddit():
                         post_from_request.selftext,
                         post_from_request.url,
                         post_from_request.score,
-                        "/"+str(post_from_request.subreddit),
+                        "/" + str(post_from_request.subreddit),
                         post_from_request.num_comments
                     )
                 )
@@ -93,20 +82,12 @@ class Reddit():
     def load_comments(id):
         submission = handler.submission(id)
 
-
         # nodeList = [Tree('Test1'), Tree('2')]
         # node = Tree('Test', nodeList)
+        # node.add_child(Tree('3'))
         # print(len(node.children))
-        t = print_comments(submission.comments, Tree('INIT'))
+        comment_tree = Tree('COMMENTS', print_comments(submission.comments, []))
+        print("\n\nNo. of children:\t" + format(len(comment_tree.children)))
         # print(
         #     t.name + "\n No. of children: " +
         #     format(len(t.children)))
-
-
-
-
-
-
-
-
-
