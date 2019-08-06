@@ -24,3 +24,67 @@ Tree(Parent,
 
 nodeList = [Tree('Test1'), Tree('2')]
 node = Tree('Test', nodeList)
+
+
+def print_comments(parent, parentName ):
+    t = Tree('')
+    branch = Tree('')
+    for child in parent:
+        if isinstance(child, MoreComments):
+            continue
+        try:
+            print("PRE:\t" + child.body + "\t children: " + format(len(child.replies)) + "\n")
+        except AttributeError:
+            continue
+        if len(child.replies) > 0:
+            for grand in child.replies:
+                if isinstance(grand, MoreComments):
+                    continue
+                try:
+                    print("AFTER:\t" + grand.body + "\t children: " + format(
+                        len(grand.replies)) + "\t" + child.body + "\n")
+                    if len(grand.replies) > 0:
+                        arrived_branch = print_comments(grand.replies)
+                        #Ti mporei na erthei
+                        # Tree(name, [Lista Tree])
+                        #arrived_brand = Tree(1, [Tree(1a), Tree(1b)]
+                        branch = Tree(grand.body, [arrived_branch])
+                    else:
+                        branch = Tree(grand.body)
+                    print(
+                        branch.name + "\n No. of children: " +
+                        format(len(branch.children)))
+                except AttributeError:
+                    continue
+        t.add_child(Tree(child.body))
+
+
+    return t
+
+
+
+def print_comments(parent, recList):
+
+    t = Tree('')
+    branch = Tree('')
+    for child in parent:
+        if isinstance(child, MoreComments):
+            continue
+        try:
+            print(child.body)
+            if len(child.replies) > 0:
+                for reply in child.replies:
+                    print(reply.body)
+
+                    branch.add_child(Tree(reply.body))
+                    recList = print_comments(reply.replies, recList)
+
+                t = Tree(child.body, [branch])
+            else:
+                t = Tree(child.body)
+            recList.append(t)
+        except AttributeError:
+            continue
+
+    print(recList)
+    return recList
