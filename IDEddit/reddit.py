@@ -40,27 +40,28 @@ def sub_exists(request):
 
 
 def print_comments(parent, branch):
-    t = Tree('EMPTY_TREE')
+    t = branch
     for child in parent:
         if isinstance(child, MoreComments):
             continue
         try:
-            print(child.body + "\t children: " + format(len(child.replies)) + "\n")
+            print("PRE:\t"+child.body + "\t children: " + format(len(child.replies)) + "\n")
             #init node with current comment
-            t = Tree(child.body)
+            t = branch
         except AttributeError:
             continue
-        if len(child.replies) > 0: #to child auto einai pateras giati exei paidia
+        if len(child.replies) > 0:
             for grand in child.replies:
                 if isinstance(grand, MoreComments):
                     continue
                 try:
-                    print(grand.body + "\t children: " + format(len(grand.replies)) + "\n")
-                    print_comments(grand.replies, 0)
-
+                    print("AFTER:\t"+grand.body + "\t children: " + format(len(grand.replies)) +"\t"+child.body+ "\n")
+                    print_comments(grand.replies, Tree(grand.body))
 
                 except AttributeError:
-                    continue
+                   continue
+
+
     return t
 
 
@@ -96,10 +97,10 @@ class Reddit():
         # nodeList = [Tree('Test1'), Tree('2')]
         # node = Tree('Test', nodeList)
         # print(len(node.children))
-        t = print_comments(submission.comments, Tree("IDEddit_FIRST_CALL"))
-        print(
-            t.name +"\n No. of children: "+
-            format(len(t.children)))
+        t = print_comments(submission.comments, Tree('INIT'))
+        # print(
+        #     t.name + "\n No. of children: " +
+        #     format(len(t.children)))
 
 
 

@@ -20,10 +20,7 @@ Tree(Parent,
          Tree(3)
     ])
 
-Από το τέλος προς την αρχή
--Όρισε Tree(2_1)
--Κάντο return
--Το βάζεις στην λίστα
--Έχεις ανοίξει από πριν Tree(2) (πατέρας)
 
 
+nodeList = [Tree('Test1'), Tree('2')]
+node = Tree('Test', nodeList)
