@@ -6,10 +6,11 @@ from anytree import Node, RenderTree
 from anytree.exporter import JsonExporter
 import json
 
+
 def list_item_format(counter, score, title, url, subreddit, number):
     list_item = (format(counter) + " | " +
                  format(score) + "\t" +
-                 title + "\t" + subreddit + "\t" + format(number) + " comments" + "\n\n\t" +
+                 title + "\t" + subreddit + "\n\n\t" + format(number) + " comments" + "\n\n\t" +
                  url + "\n\n")
     return list_item
 
