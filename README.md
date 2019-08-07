@@ -17,4 +17,4 @@ Browse Reddit through a dummy IDE.
    [PRAW]: <https://github.com/praw-dev/praw>
    [anytree]: <https://github.com/c0fec0de/anytree>
    [here]: <https://github.com/praw-dev/praw/issues/1043#issuecomment-471233284>
-   [Class]: <https://github.com/praw-dev/praw/issues/1043#issuecomment-471233284>
+   [Class]:                    <https://github.com/openjdk/jdk/blob/master/src/java.desktop/windows/classes/com/sun/java/swing/plaf/windows/AnimationController.java>
