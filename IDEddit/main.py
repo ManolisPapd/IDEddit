@@ -4,6 +4,7 @@ from finalDesign import *
 from reddit import *
 from anytree import Node, RenderTree
 from anytree.exporter import JsonExporter
+import json
 
 def list_item_format(counter, score, title, url, subreddit, number):
     list_item = (format(counter) + " | " +
@@ -94,7 +95,6 @@ class MainWindow(QtWidgets.QMainWindow):
         exporter = JsonExporter(indent=1, sort_keys=False)
         print(exporter.export(commentsTree))
 
-
         # Comments = ({
         #     'Comment1': {
         #         'Reply11' : {('Reply111')},
@@ -115,6 +115,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 l_child.addChild(l_grand)
             l.addChild(l_child)
         self.ui.treeComments.addTopLevelItem(l)
+
 
 
 if __name__ == '__main__':
