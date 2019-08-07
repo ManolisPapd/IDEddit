@@ -108,5 +108,28 @@ def print_comments(parent, recList):
 
 
 
+l = QTreeWidgetItem(["String A"])
+for i in range(3):
+    l_child = QTreeWidgetItem(["Child A" + str(i)])
+    for j in range(3):
+        l_grand = QTreeWidgetItem(["Child B" + str(i)])
+        l_child.addChild(l_grand)
+    l.addChild(l_child)
+self.ui.treeComments.addTopLevelItem(l)
+#Thelei ALLO object gia neo kid
+self.ui.treeComments.addTopLevelItem(r)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

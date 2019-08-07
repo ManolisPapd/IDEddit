@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from finalDesign import *
 from reddit import *
 from anytree import Node, RenderTree
-from anytree.exporter import JsonExporter
+from anytree.exporter import JsonExporter, DictExporter
 import json
 
 
@@ -17,8 +17,8 @@ def list_item_format(counter, score, title, url, subreddit, number):
 
 class MainWindow(QtWidgets.QMainWindow):
 
-
     def __init__(self, parent=None):
+
         super(MainWindow, self).__init__(parent=parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -78,6 +78,40 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.subredditTitle.setText("Subreddit not found! ")
             self.ui.subreddit.setText("")
 
+    def iterate_dict(self, dict_comments):
+
+        l = QTreeWidgetItem(["EMPTY"])
+
+        for p_id, p_info in dict_comments.items():
+            if isinstance(p_info, list):
+                l_child = QTreeWidgetItem(["EMPTY_CHILD"])
+                #TODO kane ton father (to prohgoumeno) titlo
+                #h parton h balto apo panv
+                print("\nCHILDREN: " + format(p_id) + "\t HAS " + format(len(p_info)) + " children")
+                #Loop thn lista me ta children, pou einai nea dicts
+                for child_dict in p_info:
+                    print(child_dict)
+
+                    for child_id, child_info in child_dict.items():
+                        if isinstance(child_info, list):
+                            print("\nCHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
+                            # Loop thn lista me ta children, pou einai nea dicts
+                            for grand_dict in child_info:
+                                print("Grand: " + format(grand_dict))
+                        else:
+                            print("\nFATHER: " + format(child_id) + "\t" + child_info)
+                            l_child = QTreeWidgetItem([child_info])
+                            l.addChild(l_child)
+
+            else:
+                print("\nFATHER: " + format(p_id) + "\t" + p_info)
+                l = QTreeWidgetItem([p_info])
+                self.ui.treeComments.addTopLevelItem(l)
+
+
+
+
+
     def clicked(self, item):
         #Getting the index from the counter
         splitted_item_info = item.text().split(" ")
@@ -94,7 +128,31 @@ class MainWindow(QtWidgets.QMainWindow):
         for pre, fill, node in RenderTree(commentsTree):
             print("%s%s" % (pre, node.name))
         exporter = JsonExporter(indent=1, sort_keys=False)
-        print(exporter.export(commentsTree))
+        # print(exporter.export(commentsTree))
+        dict_exporter = DictExporter()
+        dict_comments = dict_exporter.export(commentsTree)
+        # print(dict_comments)
+
+        self.ui.treeComments.clear()
+        self.ui.treeComments.setStyleSheet("""
+                                        QTreeWidget::item {
+                                          padding: 20px 0;
+                                          border-bottom: 1px solid black;
+                                          
+                                        }
+                                        QTreeWidget::item:hover {
+                                          background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1);
+                                          border: 1px solid #bfcde4;
+                                        }
+                                        QTreeWidget::item:selected  {
+                                          border: 1px solid #567dbc;
+                                          background: #9c9b98;
+                                        }
+
+                                        """)
+        self.iterate_dict(dict_comments)
+
+
 
         # Comments = ({
         #     'Comment1': {
@@ -108,14 +166,17 @@ class MainWindow(QtWidgets.QMainWindow):
         #         QTreeWidgetItem(commentItem, [val])
         #     self.ui.treeComments.addTopLevelItem(commentItem)
 
-        l = QTreeWidgetItem(["String A"])
-        for i in range(3):
-            l_child = QTreeWidgetItem(["Child A" + str(i)])
-            for j in range(3):
-                l_grand = QTreeWidgetItem(["Child B" + str(i)])
-                l_child.addChild(l_grand)
-            l.addChild(l_child)
-        self.ui.treeComments.addTopLevelItem(l)
+        # l = QTreeWidgetItem(["String A"])
+        # for i in range(3):
+        #     l_child = QTreeWidgetItem(["Child A" + str(i)])
+        #     for j in range(3):
+        #         l_grand = QTreeWidgetItem(["Child B" + str(i)])
+        #         l_child.addChild(l_grand)
+        #     l.addChild(l_child)
+        # r = QTreeWidgetItem(["String B"])
+        # self.ui.treeComments.addTopLevelItem(l)
+        # self.ui.treeComments.addTopLevelItem(r)
+
 
 
 
