@@ -2,7 +2,7 @@
 Mask reddit browsing with an IDE look and feel.
 
 
-### Credits Libraries Used
+### Libraries Used
   * PRAW (for Reddit API) https://github.com/praw-dev/praw
   * anytree (helped a lot while parsing comments from posts) https://github.com/c0fec0de/anytree
   
