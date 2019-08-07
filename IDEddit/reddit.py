@@ -1,6 +1,6 @@
 from prawcore import NotFound
 from mypackage import handler
-from praw.models import MoreComments
+from praw.models import MoreComments, Submission
 from anytree import Node, RenderTree
 
 
@@ -58,8 +58,10 @@ class Reddit():
             return []
 
     def load_comments(id):
-        submission = handler.submission(id)
+        submission = Submission(handler, id)
+        submission.comment_sort = 'top'
         parent = submission.comments
+        print("COMMENT LEN " + format(len(parent)))
         parent_node = Node("---------")
         for child in parent:
             if isinstance(child, MoreComments):
