@@ -1,8 +1,9 @@
 # IDEddit
-Mask reddit browsing with an IDE look and feel.
+Browse Reddit through a dummy IDE.
 
 
 ### Libraries Used
+  * PyQT5 (GUI for the program) https://github.com/baoboa/pyqt5
   * PRAW (for Reddit API) https://github.com/praw-dev/praw
   * anytree (helped a lot while parsing comments from posts) https://github.com/c0fec0de/anytree
   
