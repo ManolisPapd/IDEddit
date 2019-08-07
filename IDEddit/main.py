@@ -86,55 +86,35 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.subredditTitle.setText("Subreddit not found! ")
             self.ui.subreddit.setText("")
 
-
-    def rec_iterate_dict(self):
-        print("CALLED")
-        # l_grand = QTreeWidgetItem(["EMPTY_GRAND"])
-        # l.addChild(l_grand)
-
-        # for child_id, child_info in child_dict.items():
-        #     if isinstance(child_info, list):
-        #         print("\n----CHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
-        #         # Loop thn lista me ta children, pou einai nea dicts
-        #         for grand_dict in child_info:
-        #             print("-------Grand: " + format(grand_dict))
-        #             # self.iterate_dict(self, grand_dict)
-        #     else:
-        #         print("\n------FATHER: " + format(child_id) + "\t" + child_info)
-        #         l_grand = QTreeWidgetItem([child_info])
-        #         l.addChild(l_grand)
-
-
-
-
-
     def iterate_dict(self, dict_comments, l):
-        print("CALLED")
-
-
         for p_id, p_info in dict_comments.items():
             if isinstance(p_info, list):
                 l_child = QTreeWidgetItem(["EMPTY_CHILD"])
-                print("\nCHILDREN: " + format(p_id) + "\t HAS " + format(len(p_info)) + " children")
+                # print("\nCHILDREN: " + format(p_id) + "\t HAS " + format(len(p_info)) + " children")
                 #Loop thn lista me ta children, pou einai nea dicts
                 for child_dict in p_info:
-                    print("OUTSIDE " + format(child_dict))
+                    # print("OUTSIDE " + format(child_dict))
 
                     for child_id, child_info in child_dict.items():
                         if isinstance(child_info, list):
-                            print("\nCHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
-                            # Loop thn lista me ta children, pou einai nea dicts
+                            # print("\nCHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
+                            # Loop list with children -> dict
+                            # limit to 4 children
+                            counter = 5
+
                             for grand_dict in child_info:
-                                print("Grand: " + format(grand_dict))
-                                l_child.addChild(self.iterate_dict(grand_dict, l_child))
+                                if counter > 0:
+                                    # print("Grand: " + format(grand_dict))
+                                    l_child.addChild(self.iterate_dict(grand_dict, l_child))
+                                    counter = counter - 1
 
                         else:
-                            print("\nFATHER: " + format(child_id) + "\t" + child_info)
+                            # print("\nFATHER: " + format(child_id) + "\t" + child_info)
                             l_child = QTreeWidgetItem([child_info])
                             l.addChild(l_child)
 
             else:
-                print("\nFATHER: " + format(p_id) + "\t" + p_info)
+                # print("\nFATHER: " + format(p_id) + "\t" + p_info)
                 l = QTreeWidgetItem([p_info])
 
         return l
@@ -169,7 +149,6 @@ class MainWindow(QtWidgets.QMainWindow):
                                           padding: 20px 0;
                                           border-bottom: 1px solid black;
                                           
-                                          
                                         }
                                         QTreeWidget::item:hover {
                                           background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1);
@@ -180,34 +159,14 @@ class MainWindow(QtWidgets.QMainWindow):
                                           border-left: 6px solid blue;
                                           background: #6dadd1;
                                         }
+                                        
+                                        QListWidget::item  {
+                                            background-color: red;
+                                        }
 
                                         """)
 
         self.ui.treeComments.addTopLevelItem(self.iterate_dict(dict_comments, QTreeWidgetItem(["EMPTY"])))
-
-
-        # Comments = ({
-        #     'Comment1': {
-        #         'Reply11' : {('Reply111')},
-        #         'Reply12': ('Reply121')},
-        #     'Comment2': ('Reply21', 'Reply22')
-        # })
-        # for key, value in Comments.items():
-        #     commentItem = QTreeWidgetItem(self.ui.treeComments, [key])
-        #     for val in value:
-        #         QTreeWidgetItem(commentItem, [val])
-        #     self.ui.treeComments.addTopLevelItem(commentItem)
-
-        # l = QTreeWidgetItem(["String A"])
-        # for i in range(3):
-        #     l_child = QTreeWidgetItem(["Child A" + str(i)])
-        #     for j in range(3):
-        #         l_grand = QTreeWidgetItem(["Child B" + str(i)])
-        #         l_child.addChild(l_grand)
-        #     l.addChild(l_child)
-        # r = QTreeWidgetItem(["String B"])
-        # self.ui.treeComments.addTopLevelItem(l)
-        # self.ui.treeComments.addTopLevelItem(r)
 
 
 
