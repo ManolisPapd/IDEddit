@@ -146,8 +146,9 @@ class MainWindow(QtWidgets.QMainWindow):
                                           border: 1px solid #bfcde4;
                                         }
                                         QTreeWidget::item:selected  {
-                                          border-left: 6px solid red;
-                                          background: #9c9b98;
+                                            color: black;
+                                          border-left: 6px solid blue;
+                                          background: #6dadd1;
                                         }
 
                                         """)
