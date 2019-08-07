@@ -25,7 +25,7 @@ def sub_exists(request):
 
 
 def print_comments(incoming, parent_node):
-    results = Node(incoming.body + " /u/" + incoming.author.name, parent=parent_node)
+    results = Node(incoming.body + " - /u/" + incoming.author.name, parent=parent_node)
     if len(incoming.replies) > 0:
         for child in incoming.replies:
             if isinstance(child, MoreComments):
@@ -60,7 +60,7 @@ class Reddit():
     def load_comments(id):
         submission = handler.submission(id)
         parent = submission.comments
-        parent_node = Node("COMMENTS")
+        parent_node = Node("---------")
         for child in parent:
             if isinstance(child, MoreComments):
                 continue

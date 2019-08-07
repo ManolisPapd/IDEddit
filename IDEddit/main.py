@@ -16,6 +16,14 @@ def list_item_format(counter, score, title, url, subreddit, number):
 
 
 class MainWindow(QtWidgets.QMainWindow):
+    sys._excepthook = sys.excepthook
+
+    def exception_hook(exctype, value, traceback):
+        print(exctype, value, traceback)
+        sys._excepthook(exctype, value, traceback)
+        sys.exit(1)
+
+    sys.excepthook = exception_hook
 
     def __init__(self, parent=None):
 
@@ -78,19 +86,39 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.subredditTitle.setText("Subreddit not found! ")
             self.ui.subreddit.setText("")
 
-    def iterate_dict(self, dict_comments):
 
-        l = QTreeWidgetItem(["EMPTY"])
+    def rec_iterate_dict(self):
+        print("CALLED")
+        # l_grand = QTreeWidgetItem(["EMPTY_GRAND"])
+        # l.addChild(l_grand)
+
+        # for child_id, child_info in child_dict.items():
+        #     if isinstance(child_info, list):
+        #         print("\n----CHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
+        #         # Loop thn lista me ta children, pou einai nea dicts
+        #         for grand_dict in child_info:
+        #             print("-------Grand: " + format(grand_dict))
+        #             # self.iterate_dict(self, grand_dict)
+        #     else:
+        #         print("\n------FATHER: " + format(child_id) + "\t" + child_info)
+        #         l_grand = QTreeWidgetItem([child_info])
+        #         l.addChild(l_grand)
+
+
+
+
+
+    def iterate_dict(self, dict_comments, l):
+        print("CALLED")
+
 
         for p_id, p_info in dict_comments.items():
             if isinstance(p_info, list):
                 l_child = QTreeWidgetItem(["EMPTY_CHILD"])
-                #TODO kane ton father (to prohgoumeno) titlo
-                #h parton h balto apo panv
                 print("\nCHILDREN: " + format(p_id) + "\t HAS " + format(len(p_info)) + " children")
                 #Loop thn lista me ta children, pou einai nea dicts
                 for child_dict in p_info:
-                    print(child_dict)
+                    print("OUTSIDE " + format(child_dict))
 
                     for child_id, child_info in child_dict.items():
                         if isinstance(child_info, list):
@@ -98,6 +126,8 @@ class MainWindow(QtWidgets.QMainWindow):
                             # Loop thn lista me ta children, pou einai nea dicts
                             for grand_dict in child_info:
                                 print("Grand: " + format(grand_dict))
+                                l_child.addChild(self.iterate_dict(grand_dict, l_child))
+
                         else:
                             print("\nFATHER: " + format(child_id) + "\t" + child_info)
                             l_child = QTreeWidgetItem([child_info])
@@ -106,8 +136,8 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
                 print("\nFATHER: " + format(p_id) + "\t" + p_info)
                 l = QTreeWidgetItem([p_info])
-                self.ui.treeComments.addTopLevelItem(l)
 
+        return l
 
 
 
@@ -152,8 +182,8 @@ class MainWindow(QtWidgets.QMainWindow):
                                         }
 
                                         """)
-        self.iterate_dict(dict_comments)
 
+        self.ui.treeComments.addTopLevelItem(self.iterate_dict(dict_comments, QTreeWidgetItem(["EMPTY"])))
 
 
         # Comments = ({
