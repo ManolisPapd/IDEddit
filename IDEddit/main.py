@@ -95,19 +95,26 @@ class MainWindow(QtWidgets.QMainWindow):
         print(exporter.export(commentsTree))
 
 
-        Comments = ({
-            'Comment1': {
-                'Reply11' : {('Reply111')},
-                'Reply12': ('Reply121')},
-            'Comment2': ('Reply21', 'Reply22')
-        })
-        for key, value in Comments.items():
-            commentItem = QTreeWidgetItem(self.ui.treeComments, [key])
-            for val in value:
-                QTreeWidgetItem(commentItem, [val])
-            self.ui.treeComments.addTopLevelItem(commentItem)
+        # Comments = ({
+        #     'Comment1': {
+        #         'Reply11' : {('Reply111')},
+        #         'Reply12': ('Reply121')},
+        #     'Comment2': ('Reply21', 'Reply22')
+        # })
+        # for key, value in Comments.items():
+        #     commentItem = QTreeWidgetItem(self.ui.treeComments, [key])
+        #     for val in value:
+        #         QTreeWidgetItem(commentItem, [val])
+        #     self.ui.treeComments.addTopLevelItem(commentItem)
 
-
+        l = QTreeWidgetItem(["String A"])
+        for i in range(3):
+            l_child = QTreeWidgetItem(["Child A" + str(i)])
+            for j in range(3):
+                l_grand = QTreeWidgetItem(["Child B" + str(i)])
+                l_child.addChild(l_grand)
+            l.addChild(l_child)
+        self.ui.treeComments.addTopLevelItem(l)
 
 
 if __name__ == '__main__':
