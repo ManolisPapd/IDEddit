@@ -1,6 +1,7 @@
 # IDEddit
 Mask reddit browsing with an IDE look and feel.
 
-### Mockup
-  
+
+
+H2 Header (Underline)
   
