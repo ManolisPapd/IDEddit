@@ -139,13 +139,14 @@ class MainWindow(QtWidgets.QMainWindow):
                                           padding: 20px 0;
                                           border-bottom: 1px solid black;
                                           
+                                          
                                         }
                                         QTreeWidget::item:hover {
                                           background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1);
                                           border: 1px solid #bfcde4;
                                         }
                                         QTreeWidget::item:selected  {
-                                          border: 1px solid #567dbc;
+                                          border-left: 6px solid red;
                                           background: #9c9b98;
                                         }
 
