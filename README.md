@@ -42,6 +42,9 @@ Currently, this application can run only on Windows autonomously. On Linux, you 
        user_agent=''
      )
    ```
+   
+   ```pip install anytree```
+   
   * You are welcome and encouraged to report any issues.
   
   
