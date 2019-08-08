@@ -9,7 +9,7 @@ Browse Reddit through a dummy IDE.
 * [Issues to keep in mind](#issues)
 
 
-
+## Usage
 
 ## Installation
 Currently, this application can run only on Windows autonomously. On Linux, you can download the source code and run `main.py`. See [Contributing](#contributing)
