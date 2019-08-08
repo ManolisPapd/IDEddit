@@ -16,8 +16,8 @@ Currently, this application can run only on Windows autonomously. On Linux, you 
 
 * Windows: 
        * Navigate to the [releases] page and download the latest release.
-* Open the parent folder and run ```IDEddit.exe```.
-* Wait a couple of seconds for the application to start.
+       * Open the parent folder and run ```IDEddit.exe```.
+      * Wait a couple of seconds for the application to start.
        
        
        
