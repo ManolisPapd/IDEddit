@@ -9,7 +9,12 @@ Browse Reddit through a dummy IDE.
 * [Issues to keep in mind](#issues)
 
 ## Installation
-* Windows
+Currently, this application can run only on Windows automosly. On Linux, you can download the source code and run `main.py`. See [Contributing](#contributing)
+
+* Windows: 
+       * Navigate to [releases] page and download the latest release.
+       * Open the parent folder and run ```IDEddit.exe```.
+       * Wait a couple of seconds for the application to start.
 
 
 ## Contributing
@@ -27,6 +32,7 @@ Browse Reddit through a dummy IDE.
        user_agent=''
      )
    ```
+  * You are welcomed and encouraged to report any issues.
 ## Credits
   * [PyQT5] (GUI for the application)
   * [PRAW] (wrapper for Reddit API) 
@@ -43,4 +49,6 @@ Browse Reddit through a dummy IDE.
    [PRAW]: <https://github.com/praw-dev/praw>
    [anytree]: <https://github.com/c0fec0de/anytree>
    [here]: <https://github.com/praw-dev/praw/issues/1043#issuecomment-471233284>
+   [releases]: <https://github.com/mpapd/IDEddit/releases>
    [Class]:                    <https://github.com/openjdk/jdk/blob/master/src/java.desktop/windows/classes/com/sun/java/swing/plaf/windows/AnimationController.java>
+ 
