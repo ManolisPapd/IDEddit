@@ -12,12 +12,12 @@ Browse Reddit through a dummy IDE.
 
 
 ## Installation
-Currently, this application can run only on Windows automosly. On Linux, you can download the source code and run `main.py`. See [Contributing](#contributing)
+Currently, this application can run only on Windows autonomously. On Linux, you can download the source code and run `main.py`. See [Contributing](#contributing)
 
 * Windows: 
-       - Navigate to [releases] page and download the latest release.
-       - Open the parent folder and run ```IDEddit.exe```.
-       - Wait a couple of seconds for the application to start.
+       * Navigate to [releases] page and download the latest release.
+       * Open the parent folder and run ```IDEddit.exe```.
+       * Wait a couple of seconds for the application to start.
        
        
        
