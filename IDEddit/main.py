@@ -2,23 +2,8 @@ import sys
 from PyQt5.QtWidgets import *
 from finalDesign import *
 from reddit import *
+from comment_handler import *
 from anytree.exporter import JsonExporter, DictExporter
-
-
-def list_item_format(counter, score, title, url, subreddit, number):
-    list_item = (format(counter) + " | " +
-                 format(score) + "\t" +
-                 title + "\t" + subreddit + "\n\n\t" + format(number) + " comments" + "\n\n\t" +
-                 url + "\n\n")
-    return list_item
-
-
-def insert_newlines(string, every=64):
-    lines = []
-    for i in range(0, len(string), every):
-        lines.append(string[i:i+every])
-    return '\n'.join(lines)
-
 
 class MainWindow(QtWidgets.QMainWindow):
     sys._excepthook = sys.excepthook
@@ -53,7 +38,7 @@ class MainWindow(QtWidgets.QMainWindow):
         for post in posts:
             counter = counter + 1
             self.ui.redditList.addItem(
-                list_item_format(counter, post.score, post.title, post.url, post.subreddit,post.number_of_comments)
+                Comment_Handler.list_item_format(counter, post.score, post.title, post.url, post.subreddit,post.number_of_comments)
             )
 
     def load_subreddit(self):
@@ -78,7 +63,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     if flag:
                         sub_name = post.subreddit
                     self.ui.redditList.addItem(
-                        list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
+                        Comment_Handler.list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
                     )
                 if flag == 1:
                     self.ui.subredditTitle.setText("/All")
@@ -102,7 +87,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
                     for child_id, child_info in child_dict.items():
                         if isinstance(child_info, list):
-                            # print("\nCHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
                             # Loop list with children -> dict
                             #TODO limit children (possibly not what we need)
                             counter = 5
@@ -112,12 +96,9 @@ class MainWindow(QtWidgets.QMainWindow):
                                     l_child.addChild(self.iterate_dict(grand_dict, l_child))
                                     counter = counter - 1
                         else:
-                            # print("\n" + format(len(child_info))+ "\t" + child_info)
                             #add new line every 100 characters
                             if len(child_info) > 140:
-                                # child_info = insert_newlines(child_info, every=100)
                                 child_info_split = child_info.split()
-                                # print(format(child_info_split))
                                 child_final = ""
                                 tmp_str = ""
                                 counter = 0
@@ -136,7 +117,6 @@ class MainWindow(QtWidgets.QMainWindow):
                             l.addChild(l_child)
 
             else:
-                # print("\n"+ format(len(p_info))+ "\t" + p_info)
                 if len(p_info) > 100:
                     p_info_split = p_info.split()
                     p_final = ""

@@ -1189,7 +1189,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="bestRadioBtn">
       <property name="geometry">
        <rect>
-        <x>162</x>
+        <x>260</x>
         <y>0</y>
         <width>61</width>
         <height>20</height>
@@ -1202,7 +1202,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="hotRadioBtn">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>340</x>
         <y>0</y>
         <width>95</width>
         <height>20</height>
@@ -1215,7 +1215,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="newRadioBtn">
       <property name="geometry">
        <rect>
-        <x>308</x>
+        <x>430</x>
         <y>0</y>
         <width>61</width>
         <height>20</height>
@@ -1228,7 +1228,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="controversialRadioBtn">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>497</x>
         <y>0</y>
         <width>101</width>
         <height>20</height>
