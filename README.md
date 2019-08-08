@@ -37,7 +37,7 @@ Currently, this application can run only on Windows autonomously. On Linux, you 
        user_agent=''
      )
    ```
-  * You are welcomed and encouraged to report any issues.
+  * You are welcome and encouraged to report any issues.
   
   
   
