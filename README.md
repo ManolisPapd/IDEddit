@@ -1,5 +1,5 @@
 # IDEddit
-Browse Reddit through a dummy IDE.
+Browse Reddit through a dummy IDE. 
 
 ## Table of Contents
 * [Usage](#usage)
