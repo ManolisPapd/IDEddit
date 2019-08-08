@@ -25,7 +25,7 @@ def sub_exists(request):
 
 
 def print_comments(incoming, parent_node):
-    results = Node(incoming.body + " - /u/" + incoming.author.name, parent=parent_node)
+    results = Node("↑ " + format(incoming.score) + "\n" + incoming.body + " - /u/" + incoming.author.name, parent=parent_node)
     if len(incoming.replies) > 0:
         for child in incoming.replies:
             if isinstance(child, MoreComments):
@@ -36,12 +36,24 @@ def print_comments(incoming, parent_node):
 
 
 class Reddit():
-    def call_posts(request):
+    def call_posts(request, sorting):
         if sub_exists(request):
             posts = []
             subreddit = handler.subreddit(request)
-            hot_python = subreddit.hot(limit=100)
-            for post_from_request in hot_python:
+            default_sorting = subreddit.hot(limit=100)
+            if sorting is "hot":
+                print("HOT REQUEST")
+                default_sorting = subreddit.hot(limit=100)
+            elif sorting is "new":
+                print("NEW REQUEST")
+                default_sorting = subreddit.new(limit=100)
+            elif sorting is "controversial":
+                print("CONTROVERSIAL REQUEST")
+                default_sorting = subreddit.controversial(limit=100)
+            elif sorting is "rising":
+                print("RISING REQUEST")
+                default_sorting = subreddit.rising(limit=100)
+            for post_from_request in default_sorting:
                 posts.append(
                     Post(
                         post_from_request,
