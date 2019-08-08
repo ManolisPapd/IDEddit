@@ -19,7 +19,7 @@ Currently, this application can run only on Windows autonomously. On Linux, you 
        * Open the parent folder and run ```IDEddit.exe```.
        * Wait a couple of seconds for the application to start.
        
-1. one
+* one
    * nested
 
 2. two
