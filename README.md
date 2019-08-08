@@ -8,7 +8,10 @@ Browse Reddit through a dummy IDE.
 * [Credits](#credits)
 * [Issues to keep in mind](#issues)
 
-### Contributing
+## Installation
+
+
+## Contributing
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
   
      **How the file should look like:**
@@ -23,13 +26,13 @@ Browse Reddit through a dummy IDE.
        user_agent=''
      )
    ```
-### Credits
+## Credits
   * [PyQT5] (GUI for the application)
   * [PRAW] (wrapper for Reddit API) 
   * [anytree] (helped a lot while parsing comments from posts) 
   * [Class] (Java class that has been used as an example)
   
-### Issues
+## Issues
   * The application can crash if there are a lot of requests 
   * Some comments won't be displayed due to Reddit API limitations, more info [here] 
   * On smaller screens, some widgets will appear to override each other. This won't affect the core application.
