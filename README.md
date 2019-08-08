@@ -4,7 +4,7 @@ Browse Reddit through a dummy IDE.
 ## Table of Contents
 * [Contributing](#contributing)
 * [Credits](#credits)
-* [Issues to keep in mind](#Issues to keep in mind)
+* [Issues to keep in mind](#issues)
 
 ### Contributing
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
