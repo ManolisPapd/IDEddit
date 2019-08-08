@@ -2,7 +2,7 @@
 Browse Reddit through a dummy IDE.
 
 ### Making changes
-  * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py```.
+  * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
   
      **How the file should look like: **
    ```python
@@ -23,7 +23,7 @@ Browse Reddit through a dummy IDE.
   * [Class] (Java class that has been used as an example)
   
 ### Issues to keep in mind
-  * The application can break crash easily, if there are a lot of requests. 
+  * The application can crash if there are a lot of requests, f.e. . 
   * Some comments won't be displayed due to Reddit API limitations, more info [here] 
 
 [//]: #
