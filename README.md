@@ -17,7 +17,7 @@ Browse Reddit through a dummy IDE.
      )
    ```
 ### Credits
-  * [PyQT5] (GUI for the program)
+  * [PyQT5] (GUI for the application)
   * [PRAW] (wrapper for Reddit API) 
   * [anytree] (helped a lot while parsing comments from posts) 
   * [Class] (Java class that has been used as an example)
@@ -25,6 +25,7 @@ Browse Reddit through a dummy IDE.
 ### Issues to keep in mind
   * The application can crash if there are a lot of requests, f.e. . 
   * Some comments won't be displayed due to Reddit API limitations, more info [here] 
+  * On smaller screens, some widgets will appear to override each other. This won't affect the core application.
 
 [//]: #
    [PyQT5]: <https://github.com/baoboa/pyqt5>
