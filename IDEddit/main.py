@@ -35,18 +35,32 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.set_init_data()
-        self.ui.subreddit.returnPressed.connect(self.load_subreddit)
+        self.ui.hotRadioBtn.clicked.connect(self.btnstate)
+        self.ui.newRadioBtn.clicked.connect(self.btnstate)
+        self.ui.controversialRadioBtn.clicked.connect(self.btnstate)
+        self.ui.risingRadioBtn.clicked.connect(self.btnstate)
+        self.ui.subreddit.returnPressed.connect(lambda: self.load_subreddit("hot"))
         self.ui.postUrl.setReadOnly(True)
         self.ui.postBody.setReadOnly(True)
         self.ui.postTitle.setReadOnly(True)
         self.ui.redditList.itemDoubleClicked.connect(self.clicked)
+
+    def btnstate(self):
+        if self.ui.hotRadioBtn.isChecked():
+            self.load_subreddit("hot")
+        elif self.ui.newRadioBtn.isChecked():
+            self.load_subreddit("new")
+        elif self.ui.controversialRadioBtn.isChecked():
+            self.load_subreddit("controversial")
+        elif self.ui.risingRadioBtn.isChecked():
+            self.load_subreddit("rising")
 
     def set_init_data(self):
         self.load_popular_sub()
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("testingground4bots")
+        posts = Reddit.call_posts("popular", "hot")
 
         counter = 0
         for post in posts:
@@ -55,40 +69,42 @@ class MainWindow(QtWidgets.QMainWindow):
                 Comment_Handler.list_item_format(counter, post.score, post.title, post.url, post.subreddit,post.number_of_comments)
             )
 
-    def load_subreddit(self):
+    def load_subreddit(self, sorting):
+        print("Sorting wanted: " + sorting)
         self.ui.redditList.clear()
-        if not self.ui.subreddit.text() == "":
-            #flag will be used on whether we need to print the subreddit name
-            flag = False
-            sub_name = ""
-            # /r/all is similar with /r/popular, we need the subreddit name as well
-            if self.ui.subreddit.text() == "all":
-                flag = 1
-            elif self.ui.subreddit.text() == "popular":
-                flag = 2
-            counter = 0;
-            global posts
-            posts = Reddit.call_posts(self.ui.subreddit.text())
-            # check if given subreddit exists
-            if posts:
-                self.ui.messageLabel.setText("")
-                for post in posts:
-                    counter = counter + 1
-                    if flag:
-                        sub_name = post.subreddit
-                    self.ui.redditList.addItem(
-                        Comment_Handler.list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
-                    )
-                if flag == 1:
-                    self.ui.subredditTitle.setText("/All")
-                elif flag == 2:
-                    self.ui.subredditTitle.setText("/Popular")
-                else:
-                    self.ui.subredditTitle.setText(post.subreddit)
+        if self.ui.subreddit.text() == "":
+            self.ui.subreddit.setText("popular")
+        #flag will be used on whether we need to print the subreddit name
+        flag = False
+        sub_name = ""
+        # /r/all is similar with /r/popular, we need the subreddit name as well
+        if self.ui.subreddit.text() == "all":
+            flag = 1
+        elif self.ui.subreddit.text() == "popular":
+            flag = 2
+        counter = 0;
+        global posts
+        posts = Reddit.call_posts(self.ui.subreddit.text(), sorting)
+        # check if given subreddit exists
+        if posts:
+            self.ui.messageLabel.setText("")
+            for post in posts:
+                counter = counter + 1
+                if flag:
+                    sub_name = post.subreddit
+                self.ui.redditList.addItem(
+                    Comment_Handler.list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
+                )
+            if flag == 1:
+                self.ui.subredditTitle.setText("/All")
+            elif flag == 2:
+                self.ui.subredditTitle.setText("/Popular")
             else:
-                self.ui.messageLabel.setText("Wrong subreddit name!")
-                self.ui.subredditTitle.setText("Subreddit not found! ")
-            self.ui.subreddit.setText("")
+                self.ui.subredditTitle.setText(post.subreddit)
+        else:
+            self.ui.messageLabel.setText("Wrong subreddit name!")
+            self.ui.subredditTitle.setText("Subreddit not found! ")
+
 
     def iterate_dict(self, dict_comments, l):
         for p_id, p_info in dict_comments.items():
@@ -126,6 +142,7 @@ class MainWindow(QtWidgets.QMainWindow):
                                         tmp_str = ""
                                         child_final = child_final + "\n"
                                 child_info = child_final
+                                child_info = child_info[:3] + '\n' + child_info[3:]
 
                             l_child = QTreeWidgetItem([child_info])
                             l.addChild(l_child)
