@@ -2,6 +2,8 @@
 Browse Reddit through a dummy IDE.
 
 ## Table of Contents
+* [Usage](#usage)
+* [Installation](#installation)
 * [Contributing](#contributing)
 * [Credits](#credits)
 * [Issues to keep in mind](#issues)
