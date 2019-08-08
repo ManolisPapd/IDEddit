@@ -22,7 +22,7 @@ Currently, this application can run only on Windows autonomously. On Linux, you 
 * Windows
    * Navigate to the [releases] page and download the latest release.
 
-* two
+
    * Open the parent folder and run ```IDEddit.exe```.
 
 * three
