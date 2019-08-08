@@ -23,7 +23,7 @@ Browse Reddit through a dummy IDE.
   * [Class] (Java class that has been used as an example)
   
 ### Issues to keep in mind
-  * The application can crash if there are a lot of requests, f.e. . 
+  * The application can crash if there are a lot of requests 
   * Some comments won't be displayed due to Reddit API limitations, more info [here] 
   * On smaller screens, some widgets will appear to override each other. This won't affect the core application.
 
