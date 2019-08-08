@@ -8,6 +8,9 @@ Browse Reddit through a dummy IDE.
 * [Credits](#credits)
 * [Issues to keep in mind](#issues)
 
+
+
+
 ## Installation
 Currently, this application can run only on Windows automosly. On Linux, you can download the source code and run `main.py`. See [Contributing](#contributing)
 
@@ -15,8 +18,10 @@ Currently, this application can run only on Windows automosly. On Linux, you can
        * Navigate to [releases] page and download the latest release.
        * Open the parent folder and run ```IDEddit.exe```.
        * Wait a couple of seconds for the application to start.
-
-
+       
+       
+       
+       
 ## Contributing
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
   
@@ -33,11 +38,19 @@ Currently, this application can run only on Windows automosly. On Linux, you can
      )
    ```
   * You are welcomed and encouraged to report any issues.
+  
+  
+  
+  
 ## Credits
   * [PyQT5] (GUI for the application)
   * [PRAW] (wrapper for Reddit API) 
   * [anytree] (helped a lot while parsing comments from posts) 
   * [Class] (Java class that has been used as an example)
+  
+  
+  
+  
   
 ## Issues
   * The application can crash if there are a lot of requests 
