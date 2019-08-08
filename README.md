@@ -1,7 +1,21 @@
 # IDEddit
 Browse Reddit through a dummy IDE.
 
+### Making changes
+  * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``.
+  
+     How the file should look like
+   ```python
+     import praw
 
+     handler = praw.Reddit(
+     client_id='',
+     client_secret='',
+     username='',
+     password='',
+     user_agent=''
+     )
+   ```
 ### Credits
   * [PyQT5] (GUI for the program)
   * [PRAW] (wrapper for Reddit API) 
