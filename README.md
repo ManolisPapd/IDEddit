@@ -4,7 +4,7 @@ Browse Reddit through a dummy IDE.
 ### Making changes
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
   
-     **How the file should look like: **
+     **How the file should look like:**
    ```python
      import praw
 
