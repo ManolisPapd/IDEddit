@@ -1,21 +1,25 @@
+import os
 import sys
 from PyQt5.QtWidgets import *
 from finalDesign import *
 from reddit import *
-from anytree import Node, RenderTree
+from comment_handler import *
+import anytree
 from anytree.exporter import JsonExporter, DictExporter
-import json
-
-
-def list_item_format(counter, score, title, url, subreddit, number):
-    list_item = (format(counter) + " | " +
-                 format(score) + "\t" +
-                 title + "\t" + subreddit + "\n\n\t" + format(number) + " comments" + "\n\n\t" +
-                 url + "\n\n")
-    return list_item
+import pip
 
 
 class MainWindow(QtWidgets.QMainWindow):
+    def resource_path(relative_path):
+        """ Get absolute path to resource, works for dev and for PyInstaller """
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+
+        return os.path.join(base_path, relative_path)
+
     sys._excepthook = sys.excepthook
 
     def exception_hook(exctype, value, traceback):
@@ -48,7 +52,7 @@ class MainWindow(QtWidgets.QMainWindow):
         for post in posts:
             counter = counter + 1
             self.ui.redditList.addItem(
-                list_item_format(counter, post.score, post.title, post.url, post.subreddit,post.number_of_comments)
+                Comment_Handler.list_item_format(counter, post.score, post.title, post.url, post.subreddit,post.number_of_comments)
             )
 
     def load_subreddit(self):
@@ -73,7 +77,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     if flag:
                         sub_name = post.subreddit
                     self.ui.redditList.addItem(
-                        list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
+                        Comment_Handler.list_item_format(counter, post.score, post.title, post.url, sub_name, post.number_of_comments)
                     )
                 if flag == 1:
                     self.ui.subredditTitle.setText("/All")
@@ -91,30 +95,57 @@ class MainWindow(QtWidgets.QMainWindow):
             if isinstance(p_info, list):
                 l_child = QTreeWidgetItem(["EMPTY_CHILD"])
                 # print("\nCHILDREN: " + format(p_id) + "\t HAS " + format(len(p_info)) + " children")
-                #Loop thn lista me ta children, pou einai nea dicts
+                #Loop list with children -> dict
                 for child_dict in p_info:
                     # print("OUTSIDE " + format(child_dict))
 
                     for child_id, child_info in child_dict.items():
                         if isinstance(child_info, list):
-                            # print("\nCHILDREN: " + format(child_id) + "\t HAS " + format(len(child_info)) + " children")
                             # Loop list with children -> dict
-                            # limit to 4 children
+                            #TODO limit children (possibly not what we need)
                             counter = 5
-
                             for grand_dict in child_info:
                                 if counter > 0:
                                     # print("Grand: " + format(grand_dict))
                                     l_child.addChild(self.iterate_dict(grand_dict, l_child))
                                     counter = counter - 1
-
                         else:
-                            # print("\nFATHER: " + format(child_id) + "\t" + child_info)
+                            #add new line every 100 characters
+                            if len(child_info) > 140:
+                                child_info_split = child_info.split()
+                                child_final = ""
+                                tmp_str = ""
+                                counter = 0
+                                for inner in child_info_split:
+                                    if counter <= 70:
+                                        child_final = child_final + " " + inner
+                                        tmp_str = tmp_str + " " + inner
+                                        counter = len(tmp_str)
+                                    else:
+                                        counter = 0
+                                        tmp_str = ""
+                                        child_final = child_final + "\n"
+                                child_info = child_final
+
                             l_child = QTreeWidgetItem([child_info])
                             l.addChild(l_child)
 
             else:
-                # print("\nFATHER: " + format(p_id) + "\t" + p_info)
+                if len(p_info) > 100:
+                    p_info_split = p_info.split()
+                    p_final = ""
+                    tmp_str = ""
+                    counter = 0
+                    for inner in p_info_split:
+                        if counter <= 70:
+                            p_final = p_final + " " + inner
+                            tmp_str = tmp_str + " " + inner
+                            counter = len(tmp_str)
+                        else:
+                            counter = 0
+                            tmp_str = ""
+                            p_final = p_final + "\n"
+                    p_info = p_final
                 l = QTreeWidgetItem([p_info])
 
         return l
@@ -135,8 +166,8 @@ class MainWindow(QtWidgets.QMainWindow):
         #create comments parents and children
         self.ui.treeComments.clear() #clear previous comments
         commentsTree = Reddit.load_comments(post.id)
-        for pre, fill, node in RenderTree(commentsTree):
-            print("%s%s" % (pre, node.name))
+        # for pre, fill, node in RenderTree(commentsTree):
+        #     print("%s%s" % (pre, node.name))
         exporter = JsonExporter(indent=1, sort_keys=False)
         # print(exporter.export(commentsTree))
         dict_exporter = DictExporter()
@@ -148,6 +179,7 @@ class MainWindow(QtWidgets.QMainWindow):
                                         QTreeWidget::item {
                                           padding: 20px 0;
                                           border-bottom: 1px solid black;
+                                          max-width: 75ch;
                                           
                                         }
                                         QTreeWidget::item:hover {
@@ -163,6 +195,7 @@ class MainWindow(QtWidgets.QMainWindow):
                                         QListWidget::item  {
                                             background-color: red;
                                         }
+                                        QLayout::SetNoConstraint
 
                                         """)
 

@@ -61,8 +61,7 @@ class Reddit():
         submission = Submission(handler, id)
         submission.comment_sort = 'top'
         parent = submission.comments
-        print("COMMENT LEN " + format(len(parent)))
-        parent_node = Node("---------")
+        parent_node = Node("Comments")
         for child in parent:
             if isinstance(child, MoreComments):
                 continue
