@@ -9,11 +9,11 @@ Browse Reddit through a dummy IDE.
      import praw
 
      handler = praw.Reddit(
-     client_id='',
-     client_secret='',
-     username='',
-     password='',
-     user_agent=''
+       client_id='',
+       client_secret='',
+       username='',
+       password='',
+       user_agent=''
      )
    ```
 ### Credits
