@@ -9,6 +9,7 @@ Browse Reddit through a dummy IDE.
 * [Issues to keep in mind](#issues)
 
 ## Installation
+* Windows
 
 
 ## Contributing
