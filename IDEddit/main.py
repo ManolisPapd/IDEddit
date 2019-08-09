@@ -186,6 +186,7 @@ class MainWindow(QtWidgets.QMainWindow):
                             # adding new line so the upvotes will be on top
                             child_info = child_info[:child_info.find("|")] + '\n' + child_info[child_info.find("|"):]
                             child_info = child_info.replace("|", "", 1)
+                            child_info = child_info.replace("-/u/", "\n  -/u/", 1)
                             l_child = QTreeWidgetItem([child_info])
                             list_item.addChild(l_child)
 
@@ -211,6 +212,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 if p_info is not "Comments":
                     p_info = p_info[:p_info.find("|")] + '\n' + p_info[p_info.find("|"):]
                     p_info = p_info.replace("|", "", 1)
+                    p_info = p_info.replace("-/u/", "\n  -/u/", 1)
                 list_item = QTreeWidgetItem([p_info])
 
         return list_item
