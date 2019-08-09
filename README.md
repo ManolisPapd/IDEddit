@@ -14,8 +14,18 @@ Browse Reddit through a dummy IDE.
 * Demo
 
 * Written presentation
-  1. Tab ```WebSecurityConfig.java``` contains a text area with a Java class that you can modify to mask your browsing to Reddit
-  2. τεστ
+  1. ```WebSecurityConfig.java``` tab, contains a text area with a Java class that you can modify to hide your browsing to Reddit, switch to this anytime you want.
+  2. ```ObjectController.java``` tab, presents a list with 100 posts from /r/popular by default
+  3. Type the subreddit name on the search bar next to ```Navigate:``` and press enter
+  4. Sort posts by clicking on a radio button, the default sortins is "Hot"
+  5. Double click on a post and navigate to ```ObjectService.java``` tab
+  6. On ```ObjectService.java``` tab, at the top you can see the title post, below the post body if exists. 
+  7. Bottom left, you can see the post url or the link that have been attached by the poster
+  8. Bottom right, you can see the current subreddit
+  9. At the middle of the scree, you can see the Comments. Click to expand
+  10. In each comment, you can also see the upvotes it currently has and at the end of the comment, the username of the commentator.
+  11. Comments can be expanded as well to view the replies
+  12. Bare in mind, there are limitations to Reddit API and some comments will not be presented.
 
 ## Installation
        
