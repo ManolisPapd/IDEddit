@@ -34,7 +34,7 @@ class MainWindow(QtWidgets.QMainWindow):
         super(MainWindow, self).__init__(parent=parent)
 
         g = QDesktopWidget().availableGeometry()
-        if g.width() < 1500 and g.height() < 780:
+        if g.width() > 1500 and g.height() > 780:
             self.ui = Ui_MainWindowSmallScreen()
             self.ui.setupUiSmallScreen(self)
         else:
