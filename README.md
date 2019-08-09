@@ -12,6 +12,9 @@ Browse Reddit through a dummy IDE.
 ## Usage
 
 ## Installation
+
+* All OS
+   * Folder ```design``` and ```praw.ini``` should be present with the executable files! You can add your own images, replacing any         previous one.
        
 * Windows
    * Navigate to the [releases] page and download ```Windows-IDEddit-VERSION.zip``` the latest release.
