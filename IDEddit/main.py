@@ -100,7 +100,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.postSub.clear()
         self.ui.treeComments.clear()
 
-        print("Sorting wanted: " + sorting)
+        # print("Sorting wanted: " + sorting)
         self.ui.redditList.clear()
         if self.ui.subreddit.text() == "":
             self.ui.subreddit.setText("popular")
@@ -193,7 +193,6 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
 
                 if len(p_info) > 100:
-                    print(p_info)
                     p_info_split = p_info.split()
                     p_final = ""
                     tmp_str = ""
@@ -240,10 +239,7 @@ class MainWindow(QtWidgets.QMainWindow):
         dict_exporter = DictExporter()
         dict_comments = dict_exporter.export(commentsTree)
         # print(dict_comments)
-
         self.ui.treeComments.clear()
-
-
         self.ui.treeComments.addTopLevelItem(self.iterate_dict(dict_comments, QTreeWidgetItem(["EMPTY"])))
 
 
