@@ -35,6 +35,29 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.set_init_data()
+        self.ui.treeComments.setStyleSheet("""
+                                                QTreeWidget::item {
+                                                  padding: 20px 0;
+                                                  border-bottom: 1px solid black;
+                                                  max-width: 75ch;
+
+                                                }
+                                                QTreeWidget::item:hover {
+                                                  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1);
+                                                  border: 1px solid #bfcde4;
+                                                }
+                                                QTreeWidget::item:selected  {
+                                                    color: black;
+                                                  border-left: 6px solid blue;
+                                                  background: #6dadd1;
+                                                }
+
+                                                QListWidget::item  {
+                                                    background-color: red;
+                                                }
+                                                QLayout::SetNoConstraint
+
+                                                """)
         self.ui.hotRadioBtn.clicked.connect(self.btnstate)
         self.ui.newRadioBtn.clicked.connect(self.btnstate)
         self.ui.controversialRadioBtn.clicked.connect(self.btnstate)
@@ -219,29 +242,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # print(dict_comments)
 
         self.ui.treeComments.clear()
-        self.ui.treeComments.setStyleSheet("""
-                                        QTreeWidget::item {
-                                          padding: 20px 0;
-                                          border-bottom: 1px solid black;
-                                          max-width: 75ch;
-                                          
-                                        }
-                                        QTreeWidget::item:hover {
-                                          background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1);
-                                          border: 1px solid #bfcde4;
-                                        }
-                                        QTreeWidget::item:selected  {
-                                            color: black;
-                                          border-left: 6px solid blue;
-                                          background: #6dadd1;
-                                        }
-                                        
-                                        QListWidget::item  {
-                                            background-color: red;
-                                        }
-                                        QLayout::SetNoConstraint
 
-                                        """)
 
         self.ui.treeComments.addTopLevelItem(self.iterate_dict(dict_comments, QTreeWidgetItem(["EMPTY"])))
 
