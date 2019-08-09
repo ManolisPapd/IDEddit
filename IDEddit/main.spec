@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['/mnt/c/Users/mpapadimitriou/Desktop/IDEddit/IDEddit'],
+             pathex=['C:\\Users\\mpapadimitriou\\Desktop\\IDEddit\\IDEddit'],
              binaries=[],
              datas=[],
-             hiddenimports=['anytree'],
+             hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True )
+          console=False )
