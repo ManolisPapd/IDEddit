@@ -13,6 +13,7 @@ Browse Reddit through a dummy IDE.
 
 * Demo
 
+
 * Written presentation
   1. ```WebSecurityConfig.java``` tab, contains a text area with a Java class that you can modify to hide your browsing to Reddit, switch to this anytime you want.
   2. ```ObjectController.java``` tab, presents a list with 100 posts from /r/popular by default
