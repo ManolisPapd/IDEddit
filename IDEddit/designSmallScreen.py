@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'finalDesign.ui'
+# Form implementation generated from reading ui file 'designSmallScreen.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -8,10 +8,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindowFinalDesign(object):
-    def setupUiFinalDesign(self, MainWindow):
+class Ui_MainWindowSmallScreen(object):
+    def setupUiSmallScreen(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1406, 897)
+        MainWindow.resize(983, 600)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("design/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -62,7 +62,7 @@ class Ui_MainWindowFinalDesign(object):
         self.saveBtn_4.setFlat(True)
         self.saveBtn_4.setObjectName("saveBtn_4")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(0, 70, 363, 766))
+        self.label.setGeometry(QtCore.QRect(-140, 90, 363, 766))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("design/project.png"))
         self.label.setObjectName("label")
@@ -451,7 +451,7 @@ class Ui_MainWindowFinalDesign(object):
         self.codeNumbering.addItem(item)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1406, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 983, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")

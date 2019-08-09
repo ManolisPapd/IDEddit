@@ -2,6 +2,7 @@ import os
 import sys
 from PyQt5.QtWidgets import *
 from finalDesign import *
+from designSmallScreen import *
 from reddit import *
 from comment_handler import *
 import anytree
@@ -31,8 +32,15 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent=parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+
+        g = QDesktopWidget().availableGeometry()
+        if g.width() < 1500 and g.height() < 780:
+            self.ui = Ui_MainWindowSmallScreen()
+            self.ui.setupUiSmallScreen(self)
+        else:
+            self.ui = Ui_MainWindowFinalDesign()
+            self.ui.setupUiFinalDesign(self)
+
         self.set_init_data()
         self.ui.treeComments.setStyleSheet("""
                                                 QTreeWidget::item {
@@ -186,7 +194,7 @@ class MainWindow(QtWidgets.QMainWindow):
                             # adding new line so the upvotes will be on top
                             child_info = child_info[:child_info.find("|")] + '\n' + child_info[child_info.find("|"):]
                             child_info = child_info.replace("|", "", 1)
-                            child_info = child_info.replace("-/u/", "\n  -/u/", 1)
+                            child_info = child_info.replace("-/u/", "\n\n  -/u/", 1)
                             l_child = QTreeWidgetItem([child_info])
                             list_item.addChild(l_child)
 
@@ -212,7 +220,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 if p_info is not "Comments":
                     p_info = p_info[:p_info.find("|")] + '\n' + p_info[p_info.find("|"):]
                     p_info = p_info.replace("|", "", 1)
-                    p_info = p_info.replace("-/u/", "\n  -/u/", 1)
+                    p_info = p_info.replace("-/u/", "\n\n  -/u/", 1)
                 list_item = QTreeWidgetItem([p_info])
 
         return list_item
@@ -258,6 +266,7 @@ if __name__ == '__main__':
     w.move(g.center().x() - w.width() / 2, g.center().y() - w.height() / 2)
 
     #1366 768
+    #call design file based on resolution
 
 
     sys.exit(app.exec_())
