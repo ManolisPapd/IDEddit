@@ -451,7 +451,7 @@ class Ui_MainWindow(object):
         self.codeNumbering.addItem(item)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1406, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1406, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
