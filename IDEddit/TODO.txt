@@ -11,6 +11,10 @@ pyinstaller -F main.py --onefile --hidden-import PyQt5.sip
  ή anytree στο τέλος, not sure
 
 
+-Μικρές οθόνες
+-Πιάσε /r/
+-Βάλε ειδοποίηση όταν φορτώσει
+-Καθάρισε info tab όταν αλλάζει subreddit
 
 
 
