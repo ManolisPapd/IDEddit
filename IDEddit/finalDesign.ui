@@ -78,7 +78,7 @@
      <rect>
       <x>0</x>
       <y>830</y>
-      <width>1341</width>
+      <width>1408</width>
       <height>16</height>
      </rect>
     </property>
@@ -146,7 +146,7 @@
      <rect>
       <x>0</x>
       <y>70</y>
-      <width>371</width>
+      <width>363</width>
       <height>766</height>
      </rect>
     </property>
@@ -689,7 +689,7 @@
       <x>402</x>
       <y>37</y>
       <width>1005</width>
-      <height>801</height>
+      <height>799</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -1413,7 +1413,7 @@ p, li { white-space: pre-wrap; }
       <x>364</x>
       <y>56</y>
       <width>41</width>
-      <height>781</height>
+      <height>779</height>
      </rect>
     </property>
     <property name="font">
@@ -1774,7 +1774,6 @@ color: grey;</string>
    <addaction name="menuHelp"/>
    <addaction name="menuAbout"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionTest">
    <property name="text">
     <string>New</string>

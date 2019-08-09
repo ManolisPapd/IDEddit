@@ -246,11 +246,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.treeComments.addTopLevelItem(self.iterate_dict(dict_comments, QTreeWidgetItem(["EMPTY"])))
 
 
-
-
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()
-    w.setFixedSize(w.size())
+    # w.setFixedSize()
     w.show()
     sys.exit(app.exec_())
