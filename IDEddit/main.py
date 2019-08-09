@@ -60,7 +60,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("television", "hot")
+        posts = Reddit.call_posts("popular", "hot")
 
         counter = 0
         for post in posts:
