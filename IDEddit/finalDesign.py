@@ -302,6 +302,7 @@ class Ui_MainWindow(object):
         self.treeComments.setObjectName("treeComments")
         self.postSub = QtWidgets.QLabel(self.postDetails)
         self.postSub.setGeometry(QtCore.QRect(714, 190, 281, 20))
+        self.postSub.setText("")
         self.postSub.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.postSub.setObjectName("postSub")
         self.postUrl = QtWidgets.QLineEdit(self.postDetails)
@@ -310,6 +311,7 @@ class Ui_MainWindow(object):
         self.postUrl.setMouseTracking(True)
         self.postUrl.setTabletTracking(False)
         self.postUrl.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.postUrl.setText("")
         self.postUrl.setObjectName("postUrl")
         self.postBody = QtWidgets.QTextEdit(self.postDetails)
         self.postBody.setGeometry(QtCore.QRect(0, 21, 999, 170))
@@ -1001,8 +1003,6 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Double click on a submission in the second tab `ObjectController.java` </p></body></html>"))
         self.treeComments.headerItem().setText(0, _translate("MainWindow", "____________________________________________________________________________________________________________________________________________________________________________________________________________________________"))
-        self.postSub.setText(_translate("MainWindow", "/subreddit"))
-        self.postUrl.setText(_translate("MainWindow", "www.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/url"))
         self.postBody.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

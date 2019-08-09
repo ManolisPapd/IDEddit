@@ -70,6 +70,13 @@ class MainWindow(QtWidgets.QMainWindow):
             )
 
     def load_subreddit(self, sorting):
+        #clear tab with post details and comments
+        self.ui.postTitle.setText("Double click on a submission in the second tab `ObjectController.java` ")
+        self.ui.postUrl.clear()
+        self.ui.postBody.clear()
+        self.ui.postSub.clear()
+        self.ui.treeComments.clear()
+
         print("Sorting wanted: " + sorting)
         self.ui.redditList.clear()
         if self.ui.subreddit.text() == "":

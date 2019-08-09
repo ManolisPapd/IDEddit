@@ -1304,7 +1304,7 @@ p, li { white-space: pre-wrap; }
        </rect>
       </property>
       <property name="text">
-       <string>/subreddit</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1332,7 +1332,7 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="text">
-       <string>www.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/urlwww.url.com/url/api/url</string>
+       <string/>
       </property>
      </widget>
      <widget class="QTextEdit" name="postBody">
