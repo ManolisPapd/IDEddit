@@ -12,9 +12,6 @@ Browse Reddit through a dummy IDE.
 ## Usage
 
 ## Installation
-
-* All OS
-   * Folder ```design``` and ```praw.ini``` should be present with the executable files! You can add your own images, replacing any         previous one.
        
 * Windows
    * Navigate to the [releases] page and download ```Windows-IDEddit-VERSION.zip``` the latest release.
@@ -34,7 +31,8 @@ Browse Reddit through a dummy IDE.
 
    * Wait a couple of seconds for the application to start.
        
-       
+* All OS
+   * Folder ```design``` and ```praw.ini``` should be present with the executable files! You can add your own images, replacing any         previous one (with the same name).       
        
 ## Contributing
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
