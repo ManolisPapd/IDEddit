@@ -60,7 +60,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("popular", "hot")
+        posts = Reddit.call_posts("testingground4bots", "hot")
 
         counter = 0
         for post in posts:
@@ -106,7 +106,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.subredditTitle.setText("Subreddit not found! ")
 
 
-    def iterate_dict(self, dict_comments, l):
+    def iterate_dict(self, dict_comments, list_item):
         for p_id, p_info in dict_comments.items():
             if isinstance(p_info, list):
                 l_child = QTreeWidgetItem(["EMPTY_CHILD"])
@@ -127,34 +127,36 @@ class MainWindow(QtWidgets.QMainWindow):
                                     counter = counter - 1
                         else:
                             #add new line every 100 characters
-                            if len(child_info) > 140:
+                            if len(child_info) > 100:
                                 child_info_split = child_info.split()
                                 child_final = ""
                                 tmp_str = ""
                                 counter = 0
                                 for inner in child_info_split:
-                                    if counter <= 70:
+                                    if counter <= 100:
                                         child_final = child_final + " " + inner
                                         tmp_str = tmp_str + " " + inner
                                         counter = len(tmp_str)
                                     else:
                                         counter = 0
+                                        child_final = child_final + " " + inner
                                         tmp_str = ""
                                         child_final = child_final + "\n"
                                 child_info = child_final
-                                child_info = child_info[:3] + '\n' + child_info[3:]
-
+                            # adding new line so the upvotes will be on top
+                            child_info = child_info[:child_info.find("|")] + '\n' + child_info[child_info.find("|"):]
+                            child_info = child_info.replace("|", "", 1)
                             l_child = QTreeWidgetItem([child_info])
-                            l.addChild(l_child)
+                            list_item.addChild(l_child)
 
             else:
-                if len(p_info) > 100:
+                if len(p_info) > 100 and p_info is not "Comments":
                     p_info_split = p_info.split()
                     p_final = ""
                     tmp_str = ""
                     counter = 0
                     for inner in p_info_split:
-                        if counter <= 70:
+                        if counter <= 100:
                             p_final = p_final + " " + inner
                             tmp_str = tmp_str + " " + inner
                             counter = len(tmp_str)
@@ -163,9 +165,12 @@ class MainWindow(QtWidgets.QMainWindow):
                             tmp_str = ""
                             p_final = p_final + "\n"
                     p_info = p_final
-                l = QTreeWidgetItem([p_info])
+                #adding new line so the upvotes will be on top
+                p_info = p_info[:p_info.find("|")] + '\n' + p_info[p_info.find("|"):]
+                p_info = p_info.replace("|", "", 1)
+                list_item = QTreeWidgetItem([p_info])
 
-        return l
+        return list_item
 
 
 

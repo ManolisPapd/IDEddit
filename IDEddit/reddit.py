@@ -25,7 +25,7 @@ def sub_exists(request):
 
 
 def print_comments(incoming, parent_node):
-    results = Node("↑ " + format(incoming.score) + "\n" + incoming.body + " - /u/" + incoming.author.name, parent=parent_node)
+    results = Node("↑ " + format(incoming.score) + "|" + incoming.body + "-/u/" + incoming.author.name, parent=parent_node)
     if len(incoming.replies) > 0:
         for child in incoming.replies:
             if isinstance(child, MoreComments):
