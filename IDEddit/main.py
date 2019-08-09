@@ -60,7 +60,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_popular_sub(self):
         global posts
-        posts = Reddit.call_posts("testingground4bots", "hot")
+        posts = Reddit.call_posts("television", "hot")
 
         counter = 0
         for post in posts:
@@ -150,7 +150,9 @@ class MainWindow(QtWidgets.QMainWindow):
                             list_item.addChild(l_child)
 
             else:
-                if len(p_info) > 100 and p_info is not "Comments":
+
+                if len(p_info) > 100:
+                    print(p_info)
                     p_info_split = p_info.split()
                     p_final = ""
                     tmp_str = ""
@@ -162,12 +164,14 @@ class MainWindow(QtWidgets.QMainWindow):
                             counter = len(tmp_str)
                         else:
                             counter = 0
+                            p_final = p_final + " " + inner
                             tmp_str = ""
                             p_final = p_final + "\n"
                     p_info = p_final
                 #adding new line so the upvotes will be on top
-                p_info = p_info[:p_info.find("|")] + '\n' + p_info[p_info.find("|"):]
-                p_info = p_info.replace("|", "", 1)
+                if p_info is not "Comments":
+                    p_info = p_info[:p_info.find("|")] + '\n' + p_info[p_info.find("|"):]
+                    p_info = p_info.replace("|", "", 1)
                 list_item = QTreeWidgetItem([p_info])
 
         return list_item
