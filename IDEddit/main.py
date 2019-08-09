@@ -78,6 +78,14 @@ class MainWindow(QtWidgets.QMainWindow):
         flag = False
         sub_name = ""
 
+        #users seem to type /r/ as well, we need to handle this
+        if self.ui.subreddit.text().startswith("/r/") or self.ui.subreddit.text().startswith("r/") or self.ui.subreddit.text().startswith("/"):
+            new_name = self.ui.subreddit.text()
+            new_name = new_name.replace("/r/", "")
+            new_name = new_name.replace("r", "")
+            new_name = new_name.replace("/", "")
+            self.ui.subreddit.setText(new_name)
+
 
 
         # /r/all is similar with /r/popular, we need the subreddit name as well
