@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\mpapadimitriou\\Desktop\\IDEddit\\IDEddit'],
+             pathex=['/mnt/c/Users/mpapadimitriou/Desktop/IDEddit/IDEddit'],
              binaries=[],
              datas=[],
              hiddenimports=['anytree'],
@@ -12,7 +12,7 @@ a = Analysis(['main.py'],
              runtime_hooks=[],
              excludes=[],
              win_no_prefer_redirects=False,
-             win_private_assemblies=True,
+             win_private_assemblies=False,
              cipher=block_cipher,
              noarchive=False)
 pyz = PYZ(a.pure, a.zipped_data,
@@ -27,7 +27,7 @@ exe = EXE(pyz,
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
-          upx=False,
-          upx_exclude=['vcruntime140.dll'],
+          upx=True,
+          upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='icon.ico')
+          console=True )

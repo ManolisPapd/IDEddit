@@ -77,6 +77,9 @@ class MainWindow(QtWidgets.QMainWindow):
         #flag will be used on whether we need to print the subreddit name
         flag = False
         sub_name = ""
+
+
+
         # /r/all is similar with /r/popular, we need the subreddit name as well
         if self.ui.subreddit.text() == "all":
             flag = 1
