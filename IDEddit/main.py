@@ -30,7 +30,6 @@ class MainWindow(QtWidgets.QMainWindow):
     sys.excepthook = exception_hook
 
     def __init__(self, parent=None):
-
         super(MainWindow, self).__init__(parent=parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -220,6 +219,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def clicked(self, item):
+
         #Getting the index from the counter
         splitted_item_info = item.text().split(" ")
         index = int(splitted_item_info[0]) - 1
@@ -247,5 +247,15 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()
     w.show()
-    w.setFixedSize(w.size())
+    w.setMaximumSize(w.size().width(), w.size().height())
+    # w.setFixedSize(w.size())
+
+    print(QDesktopWidget().availableGeometry())
+    g = QDesktopWidget().availableGeometry()
+    # w.resize(0.4 * g.width(), 0.4 * g.height())
+    w.move(g.center().x() - w.width() / 2, g.center().y() - w.height() / 2)
+
+    #1366 768
+
+
     sys.exit(app.exec_())
