@@ -3,6 +3,7 @@
 
 Windows pyinstaller --windowed main.py -F
 
+pyinstaller --clean --win-private-assemblies --noupx --onedir --onefile --hidden-import=anytree --windowed --icon=icon.ico main.py -F --upx-exclude "vcruntime140.dll"
 
 pip3 install praw --upgrade --force-reinstall
 pip3 install anytree
