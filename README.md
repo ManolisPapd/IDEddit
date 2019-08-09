@@ -11,6 +11,12 @@ Browse Reddit through a dummy IDE.
 
 ## Usage
 
+* Demo
+
+* Written presentation
+  1. Tab ```WebSecurityConfig.java``` contains a text area with a Java class that you can modify to mask your browsing to Reddit
+  2. τεστ
+
 ## Installation
        
 * Windows
@@ -32,7 +38,7 @@ Browse Reddit through a dummy IDE.
    * Wait a couple of seconds for the application to start.
        
 * All OS
-   * Folder ```design``` and ```praw.ini``` should be present with the executable file! You can add your own images, replacing any         previous one (with the same name).       
+   * Folder ```design``` and configuration ```praw.ini``` should be present with the executable file! You can add your own images, replacing any previous one (with the same name), take care of image dimensions.       
        
 ## Contributing
   * In order to contribute or make changes in general, create an app on reddit and then add your account details to the file ```mypackage/__init__.py``` .
@@ -50,7 +56,16 @@ Browse Reddit through a dummy IDE.
      )
    ```
    
-   ```pip install anytree```
+   * pip packages that are needed to be installed: anytree, PyQt5
+   * Build:
+     * Windows : 
+         ``` 
+         pyinstaller --clean --win-private-assemblies --noupx --onedir --onefile --hidden-import=anytree --windowed --icon=icon.ico main.py -F --upx-exclude "vcruntime140.dll"
+         ```
+
+     * Linux : ```pyinstaller -F main.py --onefile --hidden-import PyQt5.sip```
+   
+   
    
   * You are welcome and encouraged to report any issues.
   
