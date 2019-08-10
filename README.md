@@ -73,7 +73,6 @@ Browse Reddit through a dummy IDE.
          ``` 
          
          pyinstaller --clean --win-private-assemblies --noupx --onedir --onefile --hidden-import=anytree --windowed --icon=icon.ico main.py -F --upx-exclude "vcruntime140.dll"
-         
          ```
 
    
