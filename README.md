@@ -12,8 +12,6 @@ Browse Reddit through a dummy IDE.
 ## Usage
 
 * Demo
-![](ideddit_demo.gif)
-
 
 * Written presentation
   1. ```WebSecurityConfig.java``` tab, contains a text area with a Java class that you can modify to hide your browsing to Reddit, switch to this anytime you want.
