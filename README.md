@@ -15,7 +15,7 @@ Browse Reddit through a dummy IDE.
 
 
 <p align="center">
-  ![](ideddit_demo.gif)
+![](ideddit_demo.gif)
 </p>
 
 * Written presentation
