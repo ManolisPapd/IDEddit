@@ -12,6 +12,7 @@ Browse Reddit through a dummy IDE.
 ## Usage
 
 * Demo
+
 ![](ideddit_demo.gif)
 
 * Written presentation
