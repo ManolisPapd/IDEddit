@@ -10,7 +10,13 @@ from anytree.exporter import JsonExporter, DictExporter
 import pip
 
 
+
+
+# Used for comment splitting based on resolution
+global global_comment_splitter
+
 class MainWindow(QtWidgets.QMainWindow):
+
     def resource_path(relative_path):
         """ Get absolute path to resource, works for dev and for PyInstaller """
         try:
@@ -34,10 +40,13 @@ class MainWindow(QtWidgets.QMainWindow):
         super(MainWindow, self).__init__(parent=parent)
 
         g = QDesktopWidget().availableGeometry()
-        if g.width() > 1500 and g.height() > 780:
+        if g.width() < 1500 and g.height() < 900:
+            global global_comment_splitter
+            global_comment_splitter = 40
             self.ui = Ui_MainWindowSmallScreen()
             self.ui.setupUiSmallScreen(self)
         else:
+            global_comment_splitter = 90
             self.ui = Ui_MainWindowFinalDesign()
             self.ui.setupUiFinalDesign(self)
 
@@ -175,13 +184,13 @@ class MainWindow(QtWidgets.QMainWindow):
                                     counter = counter - 1
                         else:
                             #add new line every 100 characters
-                            if len(child_info) > 100:
+                            if len(child_info) > global_comment_splitter:
                                 child_info_split = child_info.split()
                                 child_final = ""
                                 tmp_str = ""
                                 counter = 0
                                 for inner in child_info_split:
-                                    if counter <= 100:
+                                    if counter <= global_comment_splitter:
                                         child_final = child_final + " " + inner
                                         tmp_str = tmp_str + " " + inner
                                         counter = len(tmp_str)
@@ -200,13 +209,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
             else:
 
-                if len(p_info) > 100:
+                if len(p_info) > global_comment_splitter:
                     p_info_split = p_info.split()
                     p_final = ""
                     tmp_str = ""
                     counter = 0
                     for inner in p_info_split:
-                        if counter <= 100:
+                        if counter <= global_comment_splitter:
                             p_final = p_final + " " + inner
                             tmp_str = tmp_str + " " + inner
                             counter = len(tmp_str)
@@ -229,7 +238,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def clicked(self, item):
-
         #Getting the index from the counter
         splitted_item_info = item.text().split(" ")
         index = int(splitted_item_info[0]) - 1
@@ -262,11 +270,5 @@ if __name__ == '__main__':
 
     print(QDesktopWidget().availableGeometry())
     g = QDesktopWidget().availableGeometry()
-    # w.resize(0.4 * g.width(), 0.4 * g.height())
     w.move(g.center().x() - w.width() / 2, g.center().y() - w.height() / 2)
-
-    #1366 768
-    #call design file based on resolution
-
-
     sys.exit(app.exec_())
