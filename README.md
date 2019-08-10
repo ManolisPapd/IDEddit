@@ -13,9 +13,8 @@ Browse Reddit through a dummy IDE.
 
 * Demo
 
-
 <p align="center">
-![](ideddit_demo.gif)
+<img alt="title image" src="ideddit_demo.gif"/>
 </p>
 
 * Written presentation
