@@ -70,13 +70,11 @@ Browse Reddit through a dummy IDE.
    
    * pip packages that are needed to be installed: anytree, PyQt5
    * Build:
-     * Windows : 
+   
          ``` 
          pyinstaller --clean --win-private-assemblies --noupx --onedir --onefile --hidden-import=anytree --windowed --icon=icon.ico main.py -F --upx-exclude "vcruntime140.dll"
          ```
 
-     * Linux : ```pyinstaller -F main.py --onefile --hidden-import PyQt5.sip``` or ```pyinstaller -F main.py --onefile --hidden-import anytree```. Try both.
-   
    
    
   * You are welcome and encouraged to report any issues.
