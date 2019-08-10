@@ -17,17 +17,17 @@ global global_comment_splitter
 
 class MainWindow(QtWidgets.QMainWindow):
 
-    def resource_path(relative_path):
-        """ Get absolute path to resource, works for dev and for PyInstaller """
-        try:
-            # PyInstaller creates a temp folder and stores path in _MEIPASS
-            base_path = sys._MEIPASS
-        except Exception:
-            base_path = os.path.abspath(".")
+    # def resource_path(relative_path):
+    #     """ Get absolute path to resource, works for dev and for PyInstaller """
+    #     try:
+    #         # PyInstaller creates a temp folder and stores path in _MEIPASS
+    #         base_path = sys._MEIPASS
+    #     except Exception:
+    #         base_path = os.path.abspath(".")
+    #
+    #     return os.path.join(base_path, relative_path)
 
-        return os.path.join(base_path, relative_path)
-
-    sys._excepthook = sys.excepthook
+    # sys._excepthook = sys.excepthook
 
     def exception_hook(exctype, value, traceback):
         print(exctype, value, traceback)
