@@ -549,7 +549,7 @@ class Ui_MainWindowSmallScreen(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ObjectMapper - IDEddit 1.0"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ObjectMapper - IDEddit 1.2"))
         self.saveBtn_4.setText(_translate("MainWindow", "ObjectMapper"))
         self.label_2.setText(_translate("MainWindow", "Plugins (7) need update: IDEddit ready to update. (21 minutes ago)                                                                                                                                                                                                                        47:13   (CR LF)   UTF-8   maven   "))
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
