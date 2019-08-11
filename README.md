@@ -7,6 +7,7 @@ Browse Reddit through a dummy IDE.
 * [Contributing](#contributing)
 * [Credits](#credits)
 * [Issues to keep in mind](#issues)
+* [Subreddit /r/IDEddit](#subreddit)
 
 
 ## Usage
@@ -100,6 +101,9 @@ Browse Reddit through a dummy IDE.
   * Some comments won't be displayed due to Reddit API limitations, more info [here] 
   * On smaller screens, some widgets will appear to override each other. This won't affect the core application.
 
+## Subreddit
+* Feel free to join IDEddit's subreddit [subreddit]
+
 [//]: #
    [PyQT5]: <https://github.com/baoboa/pyqt5>
    [PRAW]: <https://github.com/praw-dev/praw>
@@ -107,4 +111,4 @@ Browse Reddit through a dummy IDE.
    [here]: <https://github.com/praw-dev/praw/issues/1043#issuecomment-471233284>
    [releases]: <https://github.com/mpapd/IDEddit/releases>
    [Class]:                    <https://github.com/openjdk/jdk/blob/master/src/java.desktop/windows/classes/com/sun/java/swing/plaf/windows/AnimationController.java>
- 
+ [subreddit]: <https://www.reddit.com/r/IDEddit/>
