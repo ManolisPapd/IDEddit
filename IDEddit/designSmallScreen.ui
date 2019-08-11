@@ -667,14 +667,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>Plugins (7) need update: IDEddit ready to update. (21 minutes ago)                                                                                                                                                                   47:13   CRLF   UTF-8   maven   </string>
+     <string>Plugins (7) need update: IDEddit ready to update. (21 minutes ago)                                                                                                                                                                                                                        47:13   (CR LF)   UTF-8   maven   </string>
     </property>
    </widget>
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>670</y>
+      <x>1030</x>
+      <y>50</y>
       <width>118</width>
       <height>16</height>
      </rect>
