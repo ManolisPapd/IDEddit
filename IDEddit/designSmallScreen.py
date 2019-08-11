@@ -245,7 +245,7 @@ class Ui_MainWindowSmallScreen(object):
         self.label_2.setGeometry(QtCore.QRect(20, 670, 1201, 16))
         self.label_2.setObjectName("label_2")
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
-        self.progressBar.setGeometry(QtCore.QRect(1010, 670, 118, 16))
+        self.progressBar.setGeometry(QtCore.QRect(1030, 50, 118, 16))
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -551,7 +551,7 @@ class Ui_MainWindowSmallScreen(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ObjectMapper - IDEddit 1.0"))
         self.saveBtn_4.setText(_translate("MainWindow", "ObjectMapper"))
-        self.label_2.setText(_translate("MainWindow", "Plugins (7) need update: IDEddit ready to update. (21 minutes ago)                                                                                                                                                                   47:13   CRLF   UTF-8   maven   "))
+        self.label_2.setText(_translate("MainWindow", "Plugins (7) need update: IDEddit ready to update. (21 minutes ago)                                                                                                                                                                                                                        47:13   (CR LF)   UTF-8   maven   "))
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

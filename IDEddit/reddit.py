@@ -42,16 +42,12 @@ class Reddit():
             subreddit = handler.subreddit(request)
             default_sorting = subreddit.hot(limit=100)
             if sorting is "hot":
-                print("HOT REQUEST")
                 default_sorting = subreddit.hot(limit=100)
             elif sorting is "new":
-                print("NEW REQUEST")
                 default_sorting = subreddit.new(limit=200)
             elif sorting is "controversial":
-                print("CONTROVERSIAL REQUEST")
                 default_sorting = subreddit.controversial(limit=200)
             elif sorting is "rising":
-                print("RISING REQUEST")
                 default_sorting = subreddit.rising(limit=200)
             for post_from_request in default_sorting:
                 posts.append(
