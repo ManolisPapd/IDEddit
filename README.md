@@ -102,7 +102,7 @@ Browse Reddit through a dummy IDE.
   * On smaller screens, some widgets will appear to override each other. This won't affect the core application.
 
 ## Subreddit
-* Feel free to join IDEddit's subreddit [subreddit]
+* Feel free to join IDEddit's [subreddit]
 
 [//]: #
    [PyQT5]: <https://github.com/baoboa/pyqt5>
