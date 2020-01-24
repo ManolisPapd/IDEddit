@@ -86,6 +86,7 @@ Browse Reddit through a dummy IDE.
   
   
   
+  
 ## Credits
   * [PyQT5] (GUI for the application)
   * [PRAW] (wrapper for Reddit API) 
