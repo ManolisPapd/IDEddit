@@ -113,3 +113,4 @@ Browse Reddit through a dummy IDE.
    [releases]: <https://github.com/mpapd/IDEddit/releases>
    [Class]:                    <https://github.com/openjdk/jdk/blob/master/src/java.desktop/windows/classes/com/sun/java/swing/plaf/windows/AnimationController.java>
  [subreddit]: <https://www.reddit.com/r/IDEddit/>
+
