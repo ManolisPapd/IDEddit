@@ -84,7 +84,7 @@ Browse Reddit through a dummy IDE.
   * You are welcome and encouraged to report any issues.
   
   
-  
+
   
   
 ## Credits
